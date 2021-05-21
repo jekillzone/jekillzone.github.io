@@ -1,0 +1,44 @@
+# Metadata
+title: "My Magical Blog!"
+description: "A cool thing made with love!"
+keywords: 
+
+# Third party services
+# (Anything you put here will be public!)
+google-analytics: 
+
+# Build settings
+encoding: utf-8
+markdown: kramdown
+exclude:
+  - .sass-cache/
+  - node_modules/
+  - .gitignore
+  - Gemfile
+  - _config.yml
+  - glitch.json
+  - package.json
+  - package-lock.json
+  - watch.json
+  - "*.save.*"
+
+# Use with pagination links for template flexibility
+forum_base: /community/forums
+
+collections:
+  # This serves as index (page 1) for all forum or any other collections
+  forum_indexes:
+    output: true
+    permalink: /community/forums/:slug/
+  tech:
+    output: true
+    permalink: /community/forums/:collection/:slug/
+
+collections_dir: meta
+
+page:
+  # Set to true to remove page1 slug from pagination links
+  index: true
+  limit: 2
+  
+permalink: /community/view/:slug/

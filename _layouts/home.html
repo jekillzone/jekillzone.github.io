@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+{% assign source = site.categories.tech %}
+{% assign my_array = "" | split: ',' %}
+
+{% for item in source  %}
+  {% unless item.categories contains "blog" or item.categories contains 'resources' %}
+    {% assign post_count = post_count | plus: 1 %}    
+    {% assign my_array = my_array | push: item %}
+  {% endunless %}
+{% endfor %}
+
+{{post_count}}
+
+<!-- loop -->
+{% for item in my_array %}
+  {{ item.title }}
+{% endfor %}
+
+  <main class="container">
+    <h1>
+      {{ page.title }}
+    </h1>
+    {{ content }}
+    {% for post in site.posts %}
+      <article>
+        <h1><a href="{{ site.base_url }}{{ post.url }}">{{ post.title }}</a> {{post.slug}}</h1>
+        <p>{{ post.date | date_to_string }}</p>
+          <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 156 }}</p>
+      </article>
+    {% endfor %}
+  </main>
+

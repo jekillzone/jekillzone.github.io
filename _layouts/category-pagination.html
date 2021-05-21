@@ -1,0 +1,88 @@
+---
+layout: default
+debug: true
+---
+
+{% if page.collection == "forum_indexes" %}
+  {% assign this_page = "page1" %}
+  {% assign name = page.slug %}
+{% else %}
+  {% assign this_page = page.slug %}
+  {% assign name = page.collection %}
+{% endif %}
+
+{% assign posts = site.categories[name]  %}
+{% assign post_array = "" | split: ',' %}
+
+{% for item in posts  %}
+  {% unless item.categories contains "blog" or item.categories contains 'resources' %}
+    {% assign post_count = post_count | plus: 1 %}        
+    {% assign post_array = post_array | push: item %}
+  {% endunless %}
+{% endfor %}
+
+{% if layout.debug == true %}
+DEBUG<br>
+=====<br>
+slug: {{ page.slug }}<br>
+collection: {{ name }}<br>
+page: {{ this_page }}<br>
+count: {{ post_count }}<br>
+=====<br><br>
+{% endif %}
+
+{% assign current_page = this_page | replace: "page", "" | to_integer %} 
+
+{% assign offs = current_page | minus: 1 | times: site.page.limit %}
+
+{% assign total = post_count | divided_by: site.page.limit %}
+
+{% assign mod = post_count | modulo: site.page.limit %}
+
+{% if mod > 0 %}
+  {% assign total_pages = total | plus: 1 %}
+{% else %}
+  {% assign total_pages = total %}
+{% endif %}
+
+
+{% if current_page > total_pages  %}
+  
+  <h2>The page you requested cannot be displayed right now.</h2>
+  <p>It may be temporarily unavailable, the link you clicked on may be broken or expired, or you may not have permission to view this page.</p>
+
+{% else %}
+
+  <ul>
+  {% assign mycol = post_array | sort: 'date' | reverse %}
+
+  {% for item in mycol offset: offs limit: site.page.limit %}
+    <!-- {% unless item.categories contains 'blog' or item.categories contains 'resources' %} -->
+    <li>
+      <a href="{{ item.url }}">
+        {{ item.title }}
+      </a>
+    </li>
+    <!-- {% endunless %} -->
+  {% endfor %}
+  </ul>
+
+  <div class="paginate">
+  {% for num in (1..total_pages) %}
+    {% if num == current_page %}
+      <span>{{num}}</span>
+    {% else %}
+      {% if num == 1 and site.page.index == true %}
+        <a href="{{site.forum_base}}/{{name}}">{{num}}</a>
+      {% else %}
+        <a href="{{site.forum_base}}/{{name}}/page{{num}}">{{num}}</a>
+      {% endif %}
+    {% endif %}
+
+  {% endfor %}
+  </div>
+  <br><br>
+
+  Page {{ current_page }} of {{ total_pages }}
+
+{% endif %}
