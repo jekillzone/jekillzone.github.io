@@ -59,7 +59,7 @@ count: {{ post_count }}<br>
   {% for item in mycol offset: offs limit: site.page.limit %}
     <!-- {% unless item.categories contains 'blog' or item.categories contains 'resources' %} -->
     <li>
-      <a href="{{ item.url }}">
+      <a href="{{ site.baseurl }}{{ item.url }}">
         {{ item.title }}
       </a>
     </li>
