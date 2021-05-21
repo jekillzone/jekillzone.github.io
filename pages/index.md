@@ -4,6 +4,8 @@ layout: home
 permalink: /
 ---
 
+{{ site.url }}
+
 **Oh hi,**
 
 Welcome to Jekyll!
