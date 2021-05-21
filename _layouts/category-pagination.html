@@ -73,9 +73,9 @@ count: {{ post_count }}<br>
       <span>{{num}}</span>
     {% else %}
       {% if num == 1 and site.page.index == true %}
-        <a href="{{site.forum_base}}/{{name}}">{{num}}</a>
+        <a href="{{ site.baseurl }}{{site.forum_base}}/{{name}}">{{num}}</a>
       {% else %}
-        <a href="{{site.forum_base}}/{{name}}/page{{num}}">{{num}}</a>
+        <a href="{{ site.baseurl }}{{site.forum_base}}/{{name}}/page{{num}}">{{num}}</a>
       {% endif %}
     {% endif %}
 
