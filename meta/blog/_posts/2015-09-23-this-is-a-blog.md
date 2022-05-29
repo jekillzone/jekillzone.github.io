@@ -1,6 +1,6 @@
 ---
 layout: post
 title: "This is a blog article"
-categories: tech
+categories: spotlight
 author: "Spong Bob"
 ---
