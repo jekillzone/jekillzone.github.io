@@ -33,6 +33,9 @@ collections:
   forum_indexes:
     output: true
     permalink: /community/forums/:slug/
+  blog_indexes:
+    output: true
+    permalink: /community/blogs/:slug/
   tech:
     output: true
     permalink: /community/forums/:collection/:slug/
