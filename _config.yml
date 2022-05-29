@@ -36,6 +36,9 @@ collections:
   tech:
     output: true
     permalink: /community/forums/:collection/:slug/
+  addons:
+    output: true
+    permalink: /community/forums/:collection/:slug/
 
 collections_dir: meta
 
