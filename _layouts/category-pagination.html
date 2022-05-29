@@ -19,7 +19,6 @@ debug: true
 
 
 {% for item in posts  %}
-  <!-- {% unless item.categories contains 'blog' or item.categories contains 'resources' %} -->
   {% unless item.categories contains 'resources' %}
     {% assign post_count = post_count | plus: 1 %}        
     {% assign post_array = post_array | push: item %}
