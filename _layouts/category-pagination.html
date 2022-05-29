@@ -17,12 +17,20 @@ debug: true
 {% assign posts = site.categories[name]  %}
 {% assign post_array = "" | split: ',' %}
 
+
 {% for item in posts  %}
+
+  {% comment %}
   {% unless item.categories contains "blog" or item.categories contains 'resources' %}
+  {% endcomment %}
+
+  {% unless item.categories contains 'resources' %}
     {% assign post_count = post_count | plus: 1 %}        
     {% assign post_array = post_array | push: item %}
   {% endunless %}
 {% endfor %}
+
+
 
 {% if layout.debug == true %}
 DEBUG<br>
