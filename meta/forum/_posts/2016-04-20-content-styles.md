@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "This post demonstrates post content styles"
+categories: addons
 author: "Bart Simpson"
 ---
 
