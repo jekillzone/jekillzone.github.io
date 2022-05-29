@@ -29,19 +29,24 @@ exclude:
 forum_base: /community/forums
 
 collections:
-  # This serves as index (page 1) for all forum or any other collections
+  # This serves as index (page 1) for all forums
   forum_indexes:
     output: true
     permalink: /community/forums/:slug/
-  blog_indexes:
-    output: true
-    permalink: /community/blogs/:slug/
   tech:
     output: true
     permalink: /community/forums/:collection/:slug/
   addons:
     output: true
-    permalink: /community/forums/:collection/:slug/
+    permalink: /community/forums/:collection/:slug/    
+  # For blogs
+  # This serves as index (page 1) for all blogs
+  blog_indexes:
+    output: true
+    permalink: /community/blogs/:slug/  
+  spotlight:
+    output: true
+    permalink: /community/blogs/:collection/:slug/    
 
 collections_dir: meta
 
