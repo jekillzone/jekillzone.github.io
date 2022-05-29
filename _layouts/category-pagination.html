@@ -6,6 +6,9 @@ debug: true
 {% if page.collection == "forum_indexes" %}
   {% assign this_page = "page1" %}
   {% assign name = page.slug %}
+{% elsif page.collection == "blog_indexes" %}
+  {% assign this_page = "page1" %}
+  {% assign name = page.slug %}
 {% else %}
   {% assign this_page = page.slug %}
   {% assign name = page.collection %}
