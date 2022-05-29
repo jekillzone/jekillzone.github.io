@@ -19,6 +19,7 @@ debug: true
 
 
 {% for item in posts  %}
+  <!-- {% unless item.categories contains 'blog' or item.categories contains 'resources' %} -->
   {% unless item.categories contains 'resources' %}
     {% assign post_count = post_count | plus: 1 %}        
     {% assign post_array = post_array | push: item %}
@@ -51,11 +52,10 @@ count: {{ post_count }}<br>
   {% assign total_pages = total %}
 {% endif %}
 
-
-{% if current_page > total_pages  %}
-
  Current: {{ current_page }}  
  Total: {{ total_pages }}  
+
+{% if current_page > total_pages  %}
   
   <h2>The page you requested cannot be displayed right now.</h2>
   <p>It may be temporarily unavailable, the link you clicked on may be broken or expired, or you may not have permission to view this page.</p>
